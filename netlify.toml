@@ -1,7 +1,6 @@
 [build]
-  functions = "netlify/functions"  # Directory for your serverless functions
   command = "npm run build"         # Command to build your project
-  publish = "public"                # Directory to publish (for static sites)
+  publish = "public"                # Directory to publish static files (if applicable)
 
 [functions]
   directory = "netlify/functions"   # Directory for serverless functions
