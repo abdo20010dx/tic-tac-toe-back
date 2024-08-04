@@ -1,6 +1,0 @@
-[build]
-  command = "npm run build"         # Command to build your project
-  publish = "dist"  # Update this to the directory where your build output is located
-
-[functions]
-  directory = "netlify/functions"   # Directory for serverless functions
