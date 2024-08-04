@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from './app-module';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import { ServerOptions } from 'socket.io';
 class MyIoAdapter extends IoAdapter {
@@ -21,6 +21,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   app.useWebSocketAdapter(new MyIoAdapter(app));
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT || 4000);
 }
 bootstrap();
