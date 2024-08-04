@@ -8,7 +8,7 @@ class MyIoAdapter extends IoAdapter {
       ...options,
       cors: {
         origin: '*', // Allow all origins
-        methods: ['GET', 'POST'],
+        // methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true,
       },
@@ -21,6 +21,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   app.useWebSocketAdapter(new MyIoAdapter(app));
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
