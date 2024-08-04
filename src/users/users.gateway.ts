@@ -17,8 +17,7 @@ export class UsersGateway {
     @MessageBody() rtcRequest: RtcRequest,
     @ConnectedSocket() socket: Socket,
   ) {
-    console.log('Offer received:', rtcRequest);
-    socket.broadcast.emit(rtcRequest?.sender, rtcRequest); // send offer to all other connected clients
+    socket.broadcast.emit(rtcRequest?.receiver + '-offer', rtcRequest); // send offer to all other connected clients
   }
 
   @SubscribeMessage('answer')
@@ -26,8 +25,7 @@ export class UsersGateway {
     @MessageBody() rtcRequest: RtcRequest,
     @ConnectedSocket() socket: Socket,
   ) {
-    console.log('Answer received:', rtcRequest);
-    socket.broadcast.emit(rtcRequest?.sender, rtcRequest); // send answer to all other connected clients
+    socket.broadcast.emit(rtcRequest?.receiver + '-answer', rtcRequest); // send answer to all other connected clients
   }
 
   @SubscribeMessage('ice-candidate')
@@ -35,8 +33,7 @@ export class UsersGateway {
     @MessageBody() rtcRequest: RtcRequest,
     @ConnectedSocket() socket: Socket,
   ) {
-    console.log('ICE candidate received:', rtcRequest);
-    socket.broadcast.emit(rtcRequest?.sender, rtcRequest); // send candidate to all other connected clients
+    socket.broadcast.emit(rtcRequest?.receiver + '-candidate', rtcRequest); // send candidate to all other connected clients
   }
 
 
